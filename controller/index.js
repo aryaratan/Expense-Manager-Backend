@@ -61,20 +61,18 @@ module.exports.editExpense = async (req, res) => {
 
 module.exports.updateExpense = async (req, res) => {
     let id = req.query.id;
+    // console.log(id);
     const {description, amount} = req.body;
     let category = 'income';
     if(amount < 0){
         category = 'expense';
     }
 
-    // Expense.find({_id:id}).then(function(expense){
-    //     expense[0].description = description;
-    //     expense[0].amount = amount;
-    //     expense[0].category = category;
-    //     const doc = expense.save();
-    //     return res.redirect('back');
-    // });
-    Expense.updateOne({_id : req.params.id },{description, amount, category}).then(expnse =>{
+    
+    Expense.updateOne({_id : req.query.id }, { $set: { description:description, amount:amount, category:category } } )
+    .then(function(expense){
         res.redirect('back');
-    })
+    });
+    
+
 }   
