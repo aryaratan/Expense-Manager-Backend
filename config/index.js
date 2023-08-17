@@ -1,7 +1,8 @@
 // require mongoose library
 const mongoose = require('mongoose');
 // connect it with database which is running in localhost
-mongoose.connect('mongodb://localhost/Expense_db');
+// mongoose.connect('mongodb://localhost/Expense_db');
+mongoose.connect('mongodb+srv://31pragyaratan:Pragya123@cluster0.kskmeaq.mongodb.net/');
 
 // check for connection
 // connection is made by this function
