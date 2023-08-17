@@ -1,11 +1,13 @@
-// require mongoose library
-const mongoose = require('mongoose');
-// connect it with database which is running in localhost
-// mongoose.connect('mongodb://localhost/Expense_db');
-mongoose.connect('mongodb+srv://31pragyaratan:Pragya123@cluster0.kskmeaq.mongodb.net/');
 
-// check for connection
-// connection is made by this function
+require('dotenv').config();
+// const DATABASE = process.env.DATABASE;
+// console.log(DATABASE);
+const mongoose = require('mongoose');
+
+
+mongoose.connect(process.env.DATABASE);
+
+
 const db = mongoose.connection;
 
 // on error print it
