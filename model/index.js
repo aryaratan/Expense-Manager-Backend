@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
-// defining schema
-// each entry is called document
 const expenseSchema = new mongoose.Schema({
-    // field 
     description : {
-        // properties
         type : String,
         require: true
     },
@@ -20,7 +16,6 @@ const expenseSchema = new mongoose.Schema({
 {
     timestamps: true
 });
-// collection(of documets) name
 const Expense = mongoose.model('Expense', expenseSchema);
 
 module.exports = Expense;

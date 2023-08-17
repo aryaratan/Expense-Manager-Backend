@@ -12,7 +12,6 @@ module.exports.home = async (req, res) => {
                 expense += e.amount;
             }
         })
-        // console.log(income, expense);
         return res.send({
             expenses,
             income,
@@ -49,8 +48,6 @@ module.exports.deleteExpense = async (req, res) => {
 module.exports.editExpense = async (req, res) => {
     let id = req.query.id;
     Expense.find({_id:id}).then(function(expense){
-        // console.log(expense);
-      
         return res.send({
            decs: expense[0].description,
             amt:  expense[0].amount,
@@ -61,18 +58,14 @@ module.exports.editExpense = async (req, res) => {
 
 module.exports.updateExpense = async (req, res) => {
     let id = req.query.id;
-    // console.log(id);
     const {description, amount} = req.body;
     let category = 'income';
     if(amount < 0){
         category = 'expense';
     }
-
-    
-    Expense.updateOne({_id : req.query.id }, { $set: { description:description, amount:amount, category:category } } )
+    Expense.updateOne({_id : id }, { $set: { description:description, amount:amount, category:category } } )
     .then(function(expense){
         res.redirect('back');
     });
     
-
 }   

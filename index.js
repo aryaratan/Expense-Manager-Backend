@@ -7,7 +7,6 @@ const server = express();
 
 const port = 8000;
 
-// used for interation between two servers
 server.use(cors());
 server.use(bodyParser.json());
 server.use('/', require('./routes'));
